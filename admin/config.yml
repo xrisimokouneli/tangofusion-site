@@ -16,6 +16,13 @@ collections:
         name: "content"
         fields:
           - {label: "Brand", name: "brand", widget: "string"}
+          - label: "Εικόνες"
+            name: "images"
+            widget: "object"
+            fields:
+              - {label: "Λογότυπο", name: "logo", widget: "image", allow_multiple: false}
+              - {label: "Cover", name: "cover", widget: "image", allow_multiple: false}
+              - {label: "Φωτο ζευγαριού (PNG)", name: "couple", widget: "image", allow_multiple: false}
           - label: "Hero"
             name: "hero"
             widget: "object"

@@ -1,5 +1,10 @@
 {
   "brand": "TangoFusion",
+  "images": {
+    "logo": "/assets/logo.png",
+    "cover": "/assets/cover.jpg",
+    "couple": "/assets/couple.png"
+  },
   "hero": {
     "title": "TangoFusion",
     "subtitle": "Σχολή Τάνγκο στην Αθήνα — εμπειρία που μένει από το πρώτο βήμα.",
