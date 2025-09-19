@@ -1,0 +1,41 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets"
+public_folder: "/assets"
+
+locale: "el"
+
+collections:
+  - name: "site"
+    label: "Ρυθμίσεις/Κείμενα"
+    files:
+      - file: "content.json"
+        label: "Περιεχόμενο"
+        name: "content"
+        fields:
+          - {label: "Brand", name: "brand", widget: "string"}
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Τίτλος", name: "title", widget: "string"}
+              - {label: "Υπότιτλος", name: "subtitle", widget: "text"}
+              - {label: "Chips", name: "chips", widget: "list", field: {label: "Item", name: "item", widget: "string"}}
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - {label: "Τηλέφωνο", name: "phone", widget: "string"}
+              - {label: "Email", name: "email", widget: "string"}
+              - {label: "Διεύθυνση", name: "address", widget: "string"}
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Τίτλος", name: "title", widget: "string"}
+              - {label: "Κείμενο 1", name: "p1", widget: "text"}
+              - {label: "Κείμενο 2", name: "p2", widget: "text"}
+              - {label: "Κείμενο 3", name: "p3", widget: "text"}
+          - {label: "Taglines (λίστα)", name: "taglines", widget: "list", field: {label: "Φράση", name: "phrase", widget: "string"}}
