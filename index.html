@@ -2,87 +2,38 @@
 <html lang="el">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TangoFusion</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Raleway:wght@700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <header>
-  <div class="wrap top">
-    <div class="brand">
-      <img id="logoImg" src="/assets/logo.png" alt="Logo">
-      <div class="name" id="brandName">TangoFusion</div>
-    </div>
-    <nav class="nav">
-      <a class="btn alt" href="#about">Σχετικά</a>
-      <a class="btn cta" href="#contact">Κλείσε δοκιμαστικό</a>
-    </nav>
-  </div>
+  <div class="brand"><img src="assets/logo.png" alt="Logo"><span id="brandName">TangoFusion</span></div>
 </header>
+<main>
+  <section class="hero">
+    <h1 id="heroTitle">TangoFusion</h1>
+    <p id="heroSubtitle">Σχολή Τάνγκο στην Αθήνα</p>
+    <div id="heroChips"></div>
+    <h2 id="tagline">Μία αγκαλιά, χιλιάδες ιστορίες</h2>
+    <img src="assets/couple.png" alt="Couple" id="coupleImg">
+  </section>
+  <section id="about">
+    <h2 id="aboutTitle">Χρήστος Μπακόπουλος & Μαίρη Ζηλωτή</h2>
+    <p id="aboutP1"></p>
+    <p id="aboutP2"></p>
+    <p id="aboutP3"></p>
+  </section>
+  <section id="contact">
+    <p><a id="phoneLink" href="tel:+306990000000">Τηλέφωνο: <span id="phoneText">+30 699 000 0000</span></a></p>
+    <p><a id="mailLink" href="mailto:info@tangofusion.example">Email: <span id="mailText">info@tangofusion.example</span></a></p>
+  </section>
+</main>
+<footer>© <span id="brandName2">TangoFusion</span></footer>
 
-<section class="cover">
-  <div class="bg" id="coverBg"></div>
-  <div class="wrap inner">
-    <h1 class="title" id="heroTitle">TangoFusion</h1>
-    <p class="sub" id="heroSubtitle">Σχολή Τάνγκο στην Αθήνα — εμπειρία που μένει από το πρώτο βήμα.</p>
-    <div class="chips" id="heroChips"></div>
-  </div>
-</section>
-
-<section class="hero">
-  <div class="wrap inner">
-    <div class="card pad">
-      <div class="kicker">ΣΧΟΛΗ ΤΑΝΓΚΟ · ΑΘΗΝΑ</div>
-      <h2 id="tagline">Τάνγκο που θυμάσαι από το πρώτο βήμα</h2>
-      <p class="lead">Μαθήματα & σεμινάρια με έμφαση στη μουσικότητα, τη σύνδεση και την καθαρή τεχνική — χωρίς υπερβολές.</p>
-      <div class="btns">
-        <a class="btn cta" id="callBtn" href="tel:+306990000000">Κάλεσε</a>
-        <a class="btn alt" href="#contact">Επικοινωνία</a>
-      </div>
-    </div>
-    <div class="hero-figure">
-      <img id="coupleImg" src="/assets/couple.png" alt="Tango couple PNG">
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="wrap split">
-    <div class="card pad">
-      <h2 id="aboutTitle">Χρήστος Μπακόπουλος & Μαίρη Ζηλωτή</h2>
-      <p class="muted" id="aboutP1"></p>
-      <p class="muted" id="aboutP2"></p>
-      <p class="muted" id="aboutP3"></p>
-      <p class="quote">Για εκείνους, ο χορός είναι τρόπος ζωής — και αυτό το πάθος το μοιράζονται σε κάθε μάθημα.</p>
-    </div>
-    <div class="card pad">
-      <h2>Επικοινωνία άμεσα</h2>
-      <div class="contact-cards">
-        <a class="cbtn" id="phoneLink" href="tel:+306990000000"><strong>Τηλέφωνο:</strong> <span id="phoneText">+30 699 000 0000</span> <small>πάτησε για κλήση</small></a>
-        <a class="cbtn" id="smsLink" href="sms:+306990000000"><strong>Μήνυμα (SMS):</strong> <span id="smsText">+30 699 000 0000</span> <small>άνοιγμα εφαρμογής μηνυμάτων</small></a>
-        <a class="cbtn" id="mailLink" href="mailto:info@tangofusion.example"><strong>Email:</strong> <span id="mailText">info@tangofusion.example</span> <small>σύνθεση email</small></a>
-        <a class="cbtn" id="mapLink" target="_blank" href="https://maps.google.com/?q=TangoFusion%20Athens"><strong>Χάρτης / Οδηγίες</strong> <small id="addrText">Αθήνα, Ελλάδα</small></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap foot">
-    <span>&copy; <span id="brandName2">TangoFusion</span></span>
-    <span class="muted">V8.2 · CMS Ready</span>
-  </div>
-</footer>
-
-<div class="actionbar">
-  <div class="row">
-    <a class="action" id="callBar" href="tel:+306990000000"><span class="ico">📞</span> Κλήση</a>
-    <a class="action" id="smsBar" href="sms:+306990000000"><span class="ico">💬</span> Μήνυμα</a>
-    <a class="action" id="mapBar" target="_blank" href="https://maps.google.com/?q=TangoFusion%20Athens"><span class="ico">📍</span> Χάρτης</a>
-  </div>
-</div>
-
+<!-- Identity widget -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script src="./script.js"></script>
 </body>
 </html>
