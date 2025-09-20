@@ -27,6 +27,7 @@ collections:
               - {label: "Τίτλος", name: "title", widget: "string"}
               - {label: "Υπότιτλος", name: "subtitle", widget: "text"}
               - {label: "Chips", name: "chips", widget: "list", field: {label: "Item", name: "item", widget: "string"}}
+              - {label: "Lead (δέχεται HTML)", name: "lead", widget: "text"}
           - label: "About"
             name: "about"
             widget: "object"
