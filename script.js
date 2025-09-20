@@ -35,8 +35,17 @@
 
   function qs(id){ return document.getElementById(id); }
   function esc(s){ return String(s||''); }
+function withBust(u){
+        if(!u) return u;
+        // add cache-buster only for same-origin assets folder
+        if(/^\/?assets\//.test(u)){
+          const sep = u.includes('?') ? '&' : '?';
+          return u + sep + '_=' + Date.now();
+        }
+        return u;
+      }
 
-  fetch('content.json?_=' + Date.now())
+  fetch('/.netlify/functions/content?_=' + Date.now())
     .then(r => r.json())
     .then(data => {
 
@@ -87,11 +96,11 @@
       document.title = brand + ' — Tango';
       qs('brand-name').textContent = brand;
       qs('footer-brand').textContent = brand;
-      qs('logo').src = esc(data.images && data.images.logo || 'assets/logo.png');
+      qs('logo').src = withBust(esc(data.images && data.images.logo || 'assets/logo.png'));
 
       // Cover background image
       const cover = qs('cover-bg');
-      const coverUrl = esc(data.images && data.images.cover || 'assets/cover.jpg');
+      const coverUrl = withBust(esc(data.images && data.images.cover || 'assets/cover.jpg'));
       cover.style.backgroundImage = 'linear-gradient(180deg,rgba(0,0,0,.10) 0%,rgba(0,0,0,.45) 60%,rgba(8,10,11,.85) 100%), url(\"' + coverUrl + '\")';
 
       // Hero texts
@@ -112,7 +121,7 @@
       });
 
       // Hero couple image
-      qs('hero-couple').src = esc(data.images && data.images.couple || 'assets/couple.png');
+      qs('hero-couple').src = withBust(esc(data.images && data.images.couple || 'assets/couple.png'));
 
       // About
       qs('about-title').textContent = esc(data.about && data.about.title || '');
@@ -168,7 +177,7 @@
         gallery.forEach(item => {
           const img = document.createElement('img');
           img.loading = 'lazy';
-          img.src = esc(item.src || '');
+          img.src = withBust(esc(item.src || ''));
           img.alt = esc(item.alt || '');
           const a = document.createElement('a');
           a.href = img.src;

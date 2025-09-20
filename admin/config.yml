@@ -5,12 +5,12 @@ media_folder: "assets"
 public_folder: "/assets"
 locale: "el"
 collections:
-  - name: "site"
+  - name: "content"
     label: "Περιεχόμενο"
     files:
-      - file: "content.json"
-        label: "Content"
-        name: "content"
+      - file: "content/site.json"
+        label: "Site (Brand, Images, CTA, Taglines)"
+        name: "site"
         fields:
           - {label: "Brand", name: "brand", widget: "string"}
           - label: "Images"
@@ -20,22 +20,6 @@ collections:
               - {label: "Logo", name: "logo", widget: "image"}
               - {label: "Cover", name: "cover", widget: "image"}
               - {label: "Couple (PNG)", name: "couple", widget: "image"}
-          - label: "Hero"
-            name: "hero"
-            widget: "object"
-            fields:
-              - {label: "Τίτλος", name: "title", widget: "string"}
-              - {label: "Υπότιτλος", name: "subtitle", widget: "text"}
-              - {label: "Lead (δέχεται HTML)", name: "lead", widget: "text"}
-              - {label: "Chips", name: "chips", widget: "list", field: {label: "Item", name: "item", widget: "string"}}
-          - label: "About"
-            name: "about"
-            widget: "object"
-            fields:
-              - {label: "Τίτλος", name: "title", widget: "string"}
-              - {label: "Κείμενο 1", name: "p1", widget: "text"}
-              - {label: "Κείμενο 2", name: "p2", widget: "text"}
-              - {label: "Κείμενο 3", name: "p3", widget: "text"}
           - label: "CTA"
             name: "cta"
             widget: "object"
@@ -45,22 +29,55 @@ collections:
               - {label: "Διεύθυνση", name: "address", widget: "string"}
           - {label: "Taglines", name: "taglines", widget: "list", field: {label: "Φράση", name: "phrase", widget: "string"}}
 
-          - label: "Gallery"
-            name: "gallery"
-            widget: "list"
-            summary: "{{fields.alt}}"
-            fields:
-              - {label: "Εικόνα", name: "src", widget: "image"}
-              - {label: "Alt κείμενο", name: "alt", widget: "string"}
-          - label: "Videos"
-            name: "videos"
-            widget: "list"
-            summary: "{{fields.title}}"
+      - file: "content/hero.json"
+        label: "Hero"
+        name: "hero"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
             fields:
               - {label: "Τίτλος", name: "title", widget: "string"}
-              - {label: "YouTube URL ή ID", name: "url", widget: "string"}
+              - {label: "Υπότιτλος", name: "subtitle", widget: "text"}
+              - {label: "Lead (δέχεται HTML)", name: "lead", widget: "text"}
+              - {label: "Chips", name: "chips", widget: "list", field: {label: "Item", name: "item", widget: "string"}}
 
-          - label: "Φόρμα Επικοινωνίας"
+      - file: "content/about.json"
+        label: "About"
+        name: "about"
+        fields:
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Τίτλος", name: "title", widget: "string"}
+              - {label: "Κείμενο 1", name: "p1", widget: "text"}
+              - {label: "Κείμενο 2", name: "p2", widget: "text"}
+              - {label: "Κείμενο 3", name: "p3", widget: "text"}
+
+      - file: "content/gallery.json"
+        label: "Gallery"
+        name: "gallery"
+        fields:
+          - {label: "Gallery", name: "gallery", widget: "list", fields: [
+              {label: "Εικόνα", name: "src", widget: "image"},
+              {label: "Alt κείμενο", name: "alt", widget: "string"}
+            ]}
+
+      - file: "content/videos.json"
+        label: "Videos"
+        name: "videos"
+        fields:
+          - {label: "Videos", name: "videos", widget: "list", fields: [
+              {label: "Τίτλος", name: "title", widget: "string"},
+              {label: "YouTube URL ή ID", name: "url", widget: "string"}
+            ]}
+
+      - file: "content/form.json"
+        label: "Φόρμα Επικοινωνίας"
+        name: "form"
+        fields:
+          - label: "Form"
             name: "form"
             widget: "object"
             fields:

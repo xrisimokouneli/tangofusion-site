@@ -1,0 +1,20 @@
+{
+  "brand": "TangoFusion",
+  "images": {
+    "logo": "assets/logo.png",
+    "cover": "assets/cover.jpg",
+    "couple": "assets/couple.png"
+  },
+  "cta": {
+    "phone": "+306990000000",
+    "email": "info@tangofusion.example",
+    "address": "Athens, Greece"
+  },
+  "taglines": [
+    "Το Μπουένος Άιρες δεν είναι μακριά…",
+    "Η δύναμη είναι στην αγκαλιά",
+    "Μία αγκαλιά, χιλιάδες ιστορίες",
+    "Άφησε την καρδιά σου να σε οδηγήσει",
+    "Όταν το βήμα σου γράφει ποίηση"
+  ]
+}

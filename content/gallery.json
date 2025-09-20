@@ -1,0 +1,16 @@
+{
+  "gallery": [
+    {
+      "src": "assets/cover.jpg",
+      "alt": "Milonga night"
+    },
+    {
+      "src": "assets/couple.png",
+      "alt": "Tango couple pose"
+    },
+    {
+      "src": "assets/cover.jpg",
+      "alt": "Dance floor"
+    }
+  ]
+}
