@@ -1,5 +1,38 @@
 
 (function(){
+// Simple sanitizer: allow only STRONG/B/EM/I/BR/A with href
+      function sanitizeLimitedHTML(input){
+        input = String(input || '');
+        const allowed = new Set(['STRONG','B','EM','I','BR','A']);
+        const wrap = document.createElement('div');
+        wrap.innerHTML = input;
+
+        function render(node){
+          if(node.nodeType === Node.TEXT_NODE){
+            return node.nodeValue;
+          }
+          if(node.nodeType === Node.ELEMENT_NODE){
+            const tag = node.nodeName;
+            const children = Array.from(node.childNodes).map(render).join('');
+            if(!allowed.has(tag)){
+              return children; // strip tag, keep children
+            }
+            if(tag === 'BR'){
+              return '<br>';
+            }
+            if(tag === 'A'){
+              const href = node.getAttribute('href') || '#';
+              const safeHref = href.replace(/"/g,'&quot;');
+              return '<a href="' + safeHref + '">' + children + '</a>';
+            }
+            const t = tag.toLowerCase();
+            return '<' + t + '>' + children + '</' + t + '>';
+          }
+          return '';
+        }
+        return Array.from(wrap.childNodes).map(render).join('');
+      }
+
   function qs(id){ return document.getElementById(id); }
   function esc(s){ return String(s||''); }
 
@@ -20,6 +53,8 @@
       // Hero texts
       qs('hero-title').textContent = esc(data.hero && data.hero.title || brand);
       qs('hero-sub').textContent = esc(data.hero && data.hero.subtitle || '');
+      var heroLead = (data.hero && data.hero.lead) || '';
+      var hl = document.getElementById('hero-lead'); if(hl){ hl.innerHTML = sanitizeLimitedHTML(heroLead); }
 
       // Chips
       const chips = (data.hero && data.hero.chips) || [];
@@ -37,9 +72,9 @@
 
       // About
       qs('about-title').textContent = esc(data.about && data.about.title || '');
-      qs('about-p1').textContent = esc(data.about && data.about.p1 || '');
-      qs('about-p2').textContent = esc(data.about && data.about.p2 || '');
-      qs('about-p3').textContent = esc(data.about && data.about.p3 || '');
+      qs('about-p1').innerHTML = sanitizeLimitedHTML(data.about && data.about.p1 || '');
+      qs('about-p2').innerHTML = sanitizeLimitedHTML(data.about && data.about.p2 || '');
+      qs('about-p3').innerHTML = sanitizeLimitedHTML(data.about && data.about.p3 || '');
 
       // CTA links
       const phone = esc(data.cta && data.cta.phone || '');
