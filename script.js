@@ -3,7 +3,7 @@
 // Simple sanitizer: allow only STRONG/B/EM/I/BR/A with href
       function sanitizeLimitedHTML(input){
         input = String(input || '');
-        const allowed = new Set(['STRONG','B','EM','I','BR','A']);
+        const allowed = new Set(['STRONG','B','EM','I','BR','A','P']);
         const wrap = document.createElement('div');
         wrap.innerHTML = input;
 
