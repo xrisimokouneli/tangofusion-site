@@ -1,25 +1,32 @@
 backend:
   name: git-gateway
   branch: main
-
 media_folder: "assets"
 public_folder: "/assets"
-
+locale: "el"
 collections:
   - name: "site"
-    label: "Περιεχόμενο Ιστοσελίδας"
+    label: "Περιεχόμενο"
     files:
       - file: "content.json"
         label: "Content"
         name: "content"
         fields:
           - {label: "Brand", name: "brand", widget: "string"}
+          - label: "Images"
+            name: "images"
+            widget: "object"
+            fields:
+              - {label: "Logo", name: "logo", widget: "image"}
+              - {label: "Cover", name: "cover", widget: "image"}
+              - {label: "Couple (PNG)", name: "couple", widget: "image"}
           - label: "Hero"
             name: "hero"
             widget: "object"
             fields:
               - {label: "Τίτλος", name: "title", widget: "string"}
-              - {label: "Υπότιτλος", name: "subtitle", widget: "string"}
+              - {label: "Υπότιτλος", name: "subtitle", widget: "text"}
+              - {label: "Chips", name: "chips", widget: "list", field: {label: "Item", name: "item", widget: "string"}}
           - label: "About"
             name: "about"
             widget: "object"
