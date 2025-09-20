@@ -1,16 +1,12 @@
 {
   "gallery": [
     {
-      "src": "assets/cover.jpg",
-      "alt": "Milonga night"
+      "src": "/assets/29177062_1283877915089652_7096894266445660160_n.jpg",
+      "alt": "Παράσταση "
     },
     {
-      "src": "assets/couple.png",
-      "alt": "Tango couple pose"
-    },
-    {
-      "src": "assets/cover.jpg",
-      "alt": "Dance floor"
+      "src": "/assets/461989346_8675155232522413_8316413013865759213_n.jpg",
+      "alt": "Παράσταση"
     }
   ]
 }
