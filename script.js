@@ -3,7 +3,7 @@
 // Simple sanitizer: allow only STRONG/B/EM/I/BR/A with href
       function sanitizeLimitedHTML(input){
         input = String(input || '');
-        const allowed = new Set(['STRONG','B','EM','I','BR','A','P']);
+        const allowed = new Set(['STRONG','B','EM','I','BR','A']);
         const wrap = document.createElement('div');
         wrap.innerHTML = input;
 
@@ -39,6 +39,50 @@
   fetch('content.json?_=' + Date.now())
     .then(r => r.json())
     .then(data => {
+
+      // FORM labels/text from JSON
+      const formCfg = data.form || {};
+      const fields = (formCfg.fields || {});
+      const EN = (sel, val) => { const el=document.querySelector(sel); if(el && val!=null){ el.textContent = val; } };
+      EN('#form-title', formCfg.title);
+      EN('#form-subtitle', formCfg.subtitle);
+      EN('#label-name', fields.name_label);
+      EN('#label-email', fields.email_label);
+      EN('#label-phone', fields.phone_label);
+      EN('#label-message', fields.message_label);
+      EN('#label-consent', fields.consent_label);
+      EN('#f-submit', fields.submit_label);
+      EN('#form-success', formCfg.success);
+
+      // Progressive enhancement: AJAX submit for Netlify Forms
+      const form = document.getElementById('nf');
+      if (form){
+        function encodeForm(f){
+          const fd = new FormData(f);
+          return new URLSearchParams(fd).toString();
+        }
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+          const btn = document.getElementById('f-submit');
+          const ok = document.getElementById('form-success');
+          const err = document.getElementById('form-error');
+          ok.style.display = 'none'; err.style.display = 'none';
+          btn.disabled = true;
+          fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'form-name=' + encodeURIComponent(form.getAttribute('name')) + '&' + encodeForm(form)
+          }).then(()=>{
+            ok.style.display = 'inline';
+            form.reset();
+          }).catch(()=>{
+            err.style.display = 'inline';
+          }).finally(()=>{
+            btn.disabled = false;
+          });
+        });
+      }
+
       const brand = esc(data.brand);
       document.title = brand + ' — Tango';
       qs('brand-name').textContent = brand;
@@ -114,6 +158,67 @@
         el.textContent = phrases[i];
         sessionStorage.setItem('lastTaglineIndex', String(i));
       }
+
+
+      // GALLERY
+      const gwrap = document.getElementById('gallery-grid');
+      if (gwrap){
+        const gallery = Array.isArray(data.gallery) ? data.gallery : [];
+        gwrap.innerHTML = '';
+        gallery.forEach(item => {
+          const img = document.createElement('img');
+          img.loading = 'lazy';
+          img.src = esc(item.src || '');
+          img.alt = esc(item.alt || '');
+          const a = document.createElement('a');
+          a.href = img.src;
+          a.target = '_blank';
+          a.appendChild(img);
+          gwrap.appendChild(a);
+        });
+      }
+
+      // VIDEOS
+      const vwrap = document.getElementById('video-grid');
+      function youTubeId(u){
+        if(!u) return '';
+        try{
+          const url = new URL(u);
+          if(url.hostname.includes('youtu.be')) return url.pathname.slice(1);
+          if(url.searchParams.get('v')) return url.searchParams.get('v');
+          const parts = url.pathname.split('/');
+          const i = parts.indexOf('embed');
+          if(i >= 0 && parts[i+1]) return parts[i+1];
+        }catch(e){
+          // fallback: if looks like raw id
+          if(/^[A-Za-z0-9_\-]{10,}$/.test(u)) return u;
+        }
+        return '';
+      }
+      if (vwrap){
+        const vids = Array.isArray(data.videos) ? data.videos : [];
+        vwrap.innerHTML = '';
+        vids.forEach(v => {
+          const id = youTubeId(v.url || '');
+          if(!id) return;
+          const card = document.createElement('div');
+          const title = document.createElement('div');
+          title.className = 'video-title';
+          title.textContent = esc(v.title || '');
+          const box = document.createElement('div');
+          box.className = 'embed';
+          const iframe = document.createElement('iframe');
+          iframe.loading = 'lazy';
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+          iframe.src = 'https://www.youtube.com/embed/' + id;
+          box.appendChild(iframe);
+          card.appendChild(box);
+          if(v.title) card.appendChild(title);
+          vwrap.appendChild(card);
+        });
+      }
+
     })
     .catch(err => {
       console.error('content.json load error', err);

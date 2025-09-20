@@ -26,8 +26,8 @@ collections:
             fields:
               - {label: "Τίτλος", name: "title", widget: "string"}
               - {label: "Υπότιτλος", name: "subtitle", widget: "text"}
-              - {label: "Chips", name: "chips", widget: "list", field: {label: "Item", name: "item", widget: "string"}}
               - {label: "Lead (δέχεται HTML)", name: "lead", widget: "text"}
+              - {label: "Chips", name: "chips", widget: "list", field: {label: "Item", name: "item", widget: "string"}}
           - label: "About"
             name: "about"
             widget: "object"
@@ -44,3 +44,37 @@ collections:
               - {label: "Email", name: "email", widget: "string"}
               - {label: "Διεύθυνση", name: "address", widget: "string"}
           - {label: "Taglines", name: "taglines", widget: "list", field: {label: "Φράση", name: "phrase", widget: "string"}}
+
+          - label: "Gallery"
+            name: "gallery"
+            widget: "list"
+            summary: "{{fields.alt}}"
+            fields:
+              - {label: "Εικόνα", name: "src", widget: "image"}
+              - {label: "Alt κείμενο", name: "alt", widget: "string"}
+          - label: "Videos"
+            name: "videos"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - {label: "Τίτλος", name: "title", widget: "string"}
+              - {label: "YouTube URL ή ID", name: "url", widget: "string"}
+
+          - label: "Φόρμα Επικοινωνίας"
+            name: "form"
+            widget: "object"
+            fields:
+              - {label: "Ενεργή", name: "enabled", widget: "boolean", default: true}
+              - {label: "Τίτλος", name: "title", widget: "string"}
+              - {label: "Υπότιτλος", name: "subtitle", widget: "string"}
+              - {label: "Μήνυμα επιτυχίας", name: "success", widget: "string"}
+              - label: "Πεδία"
+                name: "fields"
+                widget: "object"
+                fields:
+                  - {label: "Ονοματεπώνυμο", name: "name_label", widget: "string"}
+                  - {label: "Email", name: "email_label", widget: "string"}
+                  - {label: "Τηλέφωνο", name: "phone_label", widget: "string"}
+                  - {label: "Μήνυμα", name: "message_label", widget: "string"}
+                  - {label: "Συναίνεση", name: "consent_label", widget: "string"}
+                  - {label: "Κουμπί Υποβολής", name: "submit_label", widget: "string"}
