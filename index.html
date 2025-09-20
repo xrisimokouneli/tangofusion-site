@@ -4,20 +4,28 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TangoFusion</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <header class="header">
   <img src="assets/logo.png" alt="Logo" class="logo">
-  <h1 id="brandName">TangoFusion</h1>
 </header>
 
+<section class="cover">
+  <img src="assets/cover.jpg" alt="Cover" class="cover-img">
+  <div class="chips">
+    <span>Milonga</span>
+    <span>Tango Escenario</span>
+    <span>Musicality</span>
+  </div>
+</section>
+
 <section class="hero">
-  <div class="hero-text">
+  <div class="hero-card">
     <h2 id="heroTitle">Χορεύοντας το Πάθος</h2>
     <p id="heroSubtitle">Σχολή Αργεντίνικου Τάνγκο</p>
-    <p id="tagline">Μία αγκαλιά, χιλιάδες ιστορίες</p>
+    <h3 id="tagline">Μία αγκαλιά, χιλιάδες ιστορίες</h3>
   </div>
   <img src="assets/couple.png" alt="Couple" class="hero-img">
 </section>
@@ -31,14 +39,21 @@
 
 <section class="contact">
   <h2>Επικοινωνία</h2>
-  <p><a id="phoneLink" href="#">Τηλέφωνο: <span id="phoneText"></span></a></p>
-  <p><a id="mailLink" href="#">Email: <span id="mailText"></span></a></p>
-  <p id="addressText"></p>
+  <div class="contact-cards">
+    <div class="card"><a id="phoneLink" href="#">📞 <span id="phoneText"></span></a></div>
+    <div class="card"><a id="mailLink" href="#">✉️ <span id="mailText"></span></a></div>
+    <div class="card"><span id="addressText"></span></div>
+  </div>
 </section>
 
-<footer>© <span id="brandName2">TangoFusion</span></footer>
+<footer>© <span id="brandName">TangoFusion</span></footer>
 
-<!-- Identity widget -->
+<div class="action-bar">
+  <a id="callBtn" href="#">📞 Κλήση</a>
+  <a id="msgBtn" href="#">💬 Μήνυμα</a>
+  <a id="mapBtn" href="#">📍 Χάρτης</a>
+</div>
+
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script src="./script.js"></script>
 </body>

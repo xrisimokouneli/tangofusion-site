@@ -1,6 +1,5 @@
-fetch('./content.json?_=' + Date.now()).then(r=>r.json()).then(c=>{
- document.getElementById('brandName').textContent=c.brand;
- document.getElementById('brandName2').textContent=c.brand;
+fetch('./content.json?_='+Date.now()).then(r=>r.json()).then(c=>{
+ document.title=c.brand;
  document.getElementById('heroTitle').textContent=c.hero.title;
  document.getElementById('heroSubtitle').textContent=c.hero.subtitle;
  document.getElementById('aboutTitle').textContent=c.about.title;
@@ -12,6 +11,9 @@ fetch('./content.json?_=' + Date.now()).then(r=>r.json()).then(c=>{
  document.getElementById('mailText').textContent=c.cta.email;
  document.getElementById('mailLink').href='mailto:'+c.cta.email;
  document.getElementById('addressText').textContent=c.cta.address;
- const phrases=c.taglines; const i=Math.floor(Math.random()*phrases.length);
+ document.getElementById('callBtn').href='tel:'+c.cta.phone.replace(/\s+/g,'');
+ document.getElementById('msgBtn').href='sms:'+c.cta.phone.replace(/\s+/g,'');
+ document.getElementById('mapBtn').href='https://maps.google.com/?q='+encodeURIComponent(c.cta.address);
+ const phrases=c.taglines;const i=Math.floor(Math.random()*phrases.length);
  document.getElementById('tagline').textContent=phrases[i];
 });
