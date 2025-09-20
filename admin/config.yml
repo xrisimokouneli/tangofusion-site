@@ -7,10 +7,10 @@ public_folder: "/assets"
 
 collections:
   - name: "site"
-    label: "Ρυθμίσεις/Κείμενα"
+    label: "Περιεχόμενο Ιστοσελίδας"
     files:
       - file: "content.json"
-        label: "Περιεχόμενο"
+        label: "Content"
         name: "content"
         fields:
           - {label: "Brand", name: "brand", widget: "string"}
@@ -20,7 +20,6 @@ collections:
             fields:
               - {label: "Τίτλος", name: "title", widget: "string"}
               - {label: "Υπότιτλος", name: "subtitle", widget: "string"}
-              - {label: "Chips", name: "chips", widget: "list", field: {label: "chip", name: "chip", widget: "string"}}
           - label: "About"
             name: "about"
             widget: "object"

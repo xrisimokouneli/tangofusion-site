@@ -4,32 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TangoFusion</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Raleway:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<header>
-  <div class="brand"><img src="assets/logo.png" alt="Logo"><span id="brandName">TangoFusion</span></div>
+<header class="header">
+  <img src="assets/logo.png" alt="Logo" class="logo">
+  <h1 id="brandName">TangoFusion</h1>
 </header>
-<main>
-  <section class="hero">
-    <h1 id="heroTitle">TangoFusion</h1>
-    <p id="heroSubtitle">Σχολή Τάνγκο στην Αθήνα</p>
-    <div id="heroChips"></div>
-    <h2 id="tagline">Μία αγκαλιά, χιλιάδες ιστορίες</h2>
-    <img src="assets/couple.png" alt="Couple" id="coupleImg">
-  </section>
-  <section id="about">
-    <h2 id="aboutTitle">Χρήστος Μπακόπουλος & Μαίρη Ζηλωτή</h2>
-    <p id="aboutP1"></p>
-    <p id="aboutP2"></p>
-    <p id="aboutP3"></p>
-  </section>
-  <section id="contact">
-    <p><a id="phoneLink" href="tel:+306990000000">Τηλέφωνο: <span id="phoneText">+30 699 000 0000</span></a></p>
-    <p><a id="mailLink" href="mailto:info@tangofusion.example">Email: <span id="mailText">info@tangofusion.example</span></a></p>
-  </section>
-</main>
+
+<section class="hero">
+  <div class="hero-text">
+    <h2 id="heroTitle">Χορεύοντας το Πάθος</h2>
+    <p id="heroSubtitle">Σχολή Αργεντίνικου Τάνγκο</p>
+    <p id="tagline">Μία αγκαλιά, χιλιάδες ιστορίες</p>
+  </div>
+  <img src="assets/couple.png" alt="Couple" class="hero-img">
+</section>
+
+<section class="about">
+  <h2 id="aboutTitle">Χρήστος Μπακόπουλος & Μαίρη Ζηλωτή</h2>
+  <p id="aboutP1"></p>
+  <p id="aboutP2"></p>
+  <p id="aboutP3"></p>
+</section>
+
+<section class="contact">
+  <h2>Επικοινωνία</h2>
+  <p><a id="phoneLink" href="#">Τηλέφωνο: <span id="phoneText"></span></a></p>
+  <p><a id="mailLink" href="#">Email: <span id="mailText"></span></a></p>
+  <p id="addressText"></p>
+</section>
+
 <footer>© <span id="brandName2">TangoFusion</span></footer>
 
 <!-- Identity widget -->
